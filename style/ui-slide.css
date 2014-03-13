@@ -42,13 +42,16 @@
 	line-height: 1.25;
 }
 
-.ui-slide-background {
+.ui-slide-background, .ui-slide-foreground {
 	bottom: 0;
+	position: absolute;
+	top: 0;
+}
+
+.ui-slide-background {
 	left: 0;
 	height: 100%;
-	position: absolute;
 	right: 0;
-	top: 0;
 	width: 100%;
 }
 
@@ -69,13 +72,13 @@
 	z-index: 1;
 }
 
-.ui-slide--schedule .ui-slide-body { padding: 0 140px; }
-
 .ui-slide--left  .ui-slide-body { left: 0; padding-left: 140px;}
 .ui-slide--right .ui-slide-body { padding-right: 140px; right: 0; }
 
 .ui-slide--dark  .ui-slide-body { text-shadow: 0 1px 0 rgba(0,0,0,1), 0 1px 1px rgba(0,0,0,1), 0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.5); }
 .ui-slide--light .ui-slide-body { text-shadow: 0 1px 0 rgba(255,255,255,1), 0 1px 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,0.5); }
+
+.ui-slide--schedule .ui-slide-collection { padding: 0 140px; }
 
 .ui-slide-heading {
 	font: 700 60px/1.5 "Futura LT";
@@ -109,9 +112,13 @@
 .ui-event {
 	background-color: rgba(255,255,255,1);
 	display: flex;
-	font-family: RooneySans;
+	font-family: "RooneySans";
 	margin: 0 0 10px;
 	padding: 20px;
+}
+
+.ui-slide--dark .ui-event {
+	background-color: rgba(25,25,25,1);
 }
 
 .ui-event-time { order: 1; padding-right: 20px; width: 7.5%; }

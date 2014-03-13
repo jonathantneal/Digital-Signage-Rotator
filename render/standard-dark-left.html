@@ -1,7 +1,18 @@
 <!doctype html>
+
 <link href="../style/base.css" rel="stylesheet">
 <link href="../style/ui-slide.css" rel="stylesheet">
 
+<script src="../script/prototype.js"></script>
+<script src="../script/DS_Slide.js"></script>
+
+<script>
+var slide = new DS_Slide_Standard(JSON.fetch('standard-dark-left.json'));
+
+document.documentElement.appendChild(slide.node.main);
+</script>
+
+<!--
 <section class="ui-slide ui-slide--standard ui-slide--dark ui-slide--left">
 	<div class="ui-slide-body">
 		<h1 class="ui-slide-heading">Decoding Shostakovich</h1>
@@ -21,3 +32,4 @@
 
 	<footer class="ui-slide-organizer">Dodge College of Film &amp; Media Arts</footer>
 </section>
+-->

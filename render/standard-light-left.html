@@ -1,7 +1,18 @@
 <!doctype html>
+
 <link href="../style/base.css" rel="stylesheet">
 <link href="../style/ui-slide.css" rel="stylesheet">
 
+<script src="../script/prototype.js"></script>
+<script src="../script/DS_Slide.js"></script>
+
+<script>
+var slide = new DS_Slide_Standard(JSON.fetch('standard-light-left.json'));
+
+document.documentElement.appendChild(slide.node.main);
+</script>
+
+<!--
 <section class="ui-slide ui-slide--standard ui-slide--light ui-slide--left">
 	<div class="ui-slide-body">
 		<h1 class="ui-slide-heading">Decodin’ Shostakovich</h1>
@@ -16,8 +27,9 @@
 		</div>
 	</div>
 
-	<canvas class="ui-slide-background" data-color="black" data-image="" data-type="" data-sizing=""></canvas>
-	<canvas class="ui-slide-foreground" data-color="transparent" data-image="" data-type="" data-sizing=""></canvas>
+	<canvas class="ui-slide-background" data-image="" data-type="" data-sizing=""></canvas>
+	<canvas class="ui-slide-foreground" data-image="" data-type="" data-sizing=""></canvas>
 
 	<footer class="ui-slide-organizer">Dodge College of Film &amp; Media Arts</footer>
 </section>
+-->
