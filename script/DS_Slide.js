@@ -143,7 +143,83 @@
 		}
 	};
 
+	function DS_Slide_Directory() {
+		this.construct.apply(this, arguments);
+	}
+
+	DS_Slide_Directory.prototype = {
+		constructor: DS_Slide_Schedule,
+		construct: function (data) {
+			var
+			self = this,
+			node = self.node = {},
+			text = self.text = {};
+
+			if (!data) return self;
+
+			// generate DOM
+			node.main = 'section.ui-slide'.toNode(
+				node.heading    = 'h1.ui-slide-heading'.toNode(),
+				node.subheading = 'subhead.ui-slide-subheading'.toNode(),
+				node.collection = '.ui-slide-collection'.toNode(),
+				node.organizer  = 'p.ui-slide-organizer'.toNode()
+			);
+
+			if (data.template) data.template.split(' ').forEach(function (templateName) {
+				node.main.classList.add('ui-slide--' + templateName);
+			});
+
+			// populate DOM
+			if (data.heading) node.heading.append(text.heading = data.heading.toText()); else node.heading.remove();
+			if (data.subheading) node.subheading.append(text.subheading = data.subheading.toText()); else node.subheading.remove();
+			if (data.organizer) node.organizer.append(text.organizer = data.organizer.toText()); else node.organizer.remove();
+
+			if (data.collection) {
+				(self.collection = data.collection.map(function (data) {
+					return new DS_Slide_Directory_Member(data);
+				})).forEach(function (slide) {
+					node.collection.appendChild(slide.node.main);
+				});
+			} else node.collection.remove();
+
+			return self;
+		}
+	};
+
+	function DS_Slide_Directory_Member() {
+		this.construct.apply(this, arguments);
+	}
+
+	DS_Slide_Directory_Member.prototype = {
+		constructor: DS_Slide_Schedule_Event,
+		construct: function (data) {
+			var
+			self = this,
+			node = self.node = {},
+			text = self.text = {};
+
+			if (!data) return self;
+
+			// generate DOM
+			node.main = 'article.ui-member'.toNode(
+				node.image    = 'img.ui-member-image'.toNode(),
+				node.name     = 'h1.ui-member-name'.toNode(),
+				node.location = 'p.ui-member-location'.toNode(),
+				node.email    = 'p.ui-member-email'.toNode()
+			);
+
+			// populate DOM
+			if (data.image) node.image.src = data.image; else node.image.src = '../asset/member-mia.jpg';
+			if (data.name) node.name.append(text.name = data.name.toText()); else node.name.remove();
+			if (data.location) node.location.append(text.location = data.location.toText()); else node.location.remove();
+			if (data.email) node.email.append(text.email = data.email.toText()); else node.email.remove();
+
+			return self;
+		}
+	};
+
 	window.DS_Slide = DS_Slide;
 	window.DS_Slide_Standard = DS_Slide_Standard;
 	window.DS_Slide_Schedule = DS_Slide_Schedule;
+	window.DS_Slide_Directory = DS_Slide_Directory;
 })();

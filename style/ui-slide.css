@@ -13,34 +13,21 @@
 	z-index: 0;
 }
 
-.ui-slide--dark {
-	background-color: rgba(0,0,0,1);
-	color: rgba(253,253,253,1);
-}
+.ui-slide--dark { background-color: rgba(0,0,0,1); color: rgba(253,253,253,1); }
 
-.ui-slide--light {
-	background-color: rgba(236,235,229,1);
-	color: rgba(56,56,56,1);
-}
+.ui-slide--light { background-color: rgba(236,235,229,1); color: rgba(56,56,56,1); }
+
+.ui-slide--directory { padding: 60px 140px 20px 140px; }
+
+.ui-slide--standard { padding: 120px 140px 20px 140px; }
 
 .ui-body {
 	overflow: hidden;
 	z-index: 0;
 }
 
-.ui-slide--standard .ui-slide-datetime {
-	font-family: "RooneySans";
-	font-size: 28px;
-	font-weight: 700;
-	line-height: 1.25;
-}
-
-.ui-slide--standard .ui-slide-location {
-	font-family: "RooneySans";
-	font-size: 24px;
-	font-style: italic;
-	line-height: 1.25;
-}
+.ui-slide--standard .ui-slide-datetime { font: 700 28px/1.25 "RooneySans"; }
+.ui-slide--standard .ui-slide-location { font: italic 24px/1.25 "RooneySans"; }
 
 .ui-slide-background, .ui-slide-foreground {
 	bottom: 0;
@@ -55,7 +42,7 @@
 	width: 100%;
 }
 
-.ui-slide--standard .ui-slide-foreground {
+.ui-slide-foreground {
 	height: 100%;
 	width: 50%;
 }
@@ -63,17 +50,9 @@
 .ui-slide--left  .ui-slide-foreground { right: 0; }
 .ui-slide--right .ui-slide-foreground { left: 0; }
 
-.ui-slide--standard .ui-slide-body {
-	bottom: 0;
-	max-width: 60em;
-	padding: 120px 20px 20px;
-	position: absolute;
-	top: 0;
-	z-index: 1;
-}
-
-.ui-slide--left  .ui-slide-body { left: 0; padding-left: 140px;}
-.ui-slide--right .ui-slide-body { padding-right: 140px; right: 0; }
+.ui-slide--standard .ui-slide-body { max-width: 60em; }
+.ui-slide--standard.ui-slide--left  .ui-slide-body { float: left; }
+.ui-slide--standard.ui-slide--right .ui-slide-body { float: right; }
 
 .ui-slide--dark  .ui-slide-body { text-shadow: 0 1px 0 rgba(0,0,0,1), 0 1px 1px rgba(0,0,0,1), 0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.5); }
 .ui-slide--light .ui-slide-body { text-shadow: 0 1px 0 rgba(255,255,255,1), 0 1px 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,0.5); }
@@ -94,7 +73,8 @@
 	text-transform: uppercase;
 }
 
-.ui-slide--schedule .ui-slide-subheading { margin-top: -0.25em; padding: 0 0 0 140px; }
+.ui-slide--schedule .ui-slide-heading + .ui-slide-subheading { margin-top: -0.25em; padding: 0 0 0 140px; }
+.ui-slide--directory .ui-slide-heading + .ui-slide-subheading { margin-top: -0.25em; }
 
 .ui-slide--dark  .ui-slide-subheading { color: #62605A; }
 .ui-slide--light .ui-slide-subheading { color: #62605A; }
@@ -123,9 +103,9 @@
 
 .ui-event-time { order: 1; padding-right: 20px; width: 7.5%; }
 .ui-event-date { order: 2; padding-right: 20px; width: 12.5%; }
-.ui-event-body { order: 3; padding-right: 100px; width: 55%; }
-	.ui-event-name { font-family: "Futura LT"; font-size: 20px; font-weight: 700; }
-	.ui-event-image { float: left; height: 100%; margin-right: 15px; }
+.ui-event-body { order: 3; max-height: 115px; overflow: hidden; padding-right: 100px; width: 55%; }
+.ui-event-name { font-family: "Futura LT"; font-size: 20px; font-weight: 700; }
+.ui-event-image { float: left; height: 100%; margin-right: 15px; }
 .ui-event-admission { order: 4; padding-right: 20px; font-style: italic; width: 10%; }
 .ui-event-audience  { order: 5; font-style: italic; width: 15%; }
 
@@ -149,4 +129,26 @@
 
 .ui-slide--active {
 	z-index: 1;
+}
+
+.ui-slide--directory .ui-slide-collection { max-height: 540px; overflow: hidden; }
+
+.ui-member {
+	display: inline-block;
+	font: 16px/1.25 "Futura LT";
+	width: 20%;
+	padding: 0 20px 30px 80px;
+	position: relative;
+}
+
+.ui-member-image {
+	border-radius: 50%;
+	left: 0;
+	height: 60px;
+	position: absolute;
+	width: 60px;
+}
+
+.ui-member-name {
+	font-weight: 700;
 }
