@@ -1,8 +1,13 @@
 (function () {
 	'use strict';
 
-	function DS_Slide() {
-		this.construct.apply(this, arguments);
+	function DS_Slide(data) {
+		var
+		template = data.template,
+		isSchedule  = /\bschedule\b/.test(template),
+		isDirectory = /\bdirectory\b/.test(template);
+
+		return isDirectory ? new DS_Slide_Directory(data) : isSchedule ? new DS_Slide_Schedule(data) : new DS_Slide_Standard(data);
 	}
 
 	function DS_Slide_Standard() {
@@ -32,6 +37,7 @@
 				node.foreground = 'canvas.ui-slide-foreground'.toNode(),
 				node.organizer  = 'footer.ui-slide-organizer'.toNode()
 			);
+			node.menuItem = 'li.ui-menu-item'.toNode();
 
 			if (data.template) data.template.split(' ').forEach(function (templateName) {
 				node.main.classList.add('ui-slide--' + templateName);
@@ -48,6 +54,7 @@
 			if (data.foreground) node.foreground.dataset.image = data.foreground;
 			if (data.backgroundSizing) node.background.dataset.sizing = data.backgroundSizing;
 			if (data.foregroundSizing) node.foreground.dataset.sizing = data.foregroundSizing;
+			if (data.menuItem) node.menuItem.append(text.menuItem = data.menuItem.toText());
 
 			return self;
 		}
@@ -69,10 +76,10 @@
 
 			// generate DOM
 			node.main = 'section.ui-slide'.toNode(
-				node.heading    = '.ui-slide-heading'.toNode(),
-				node.subheading = '.ui-slide-subheading'.toNode(),
-				node.collection = '.ui-slide-collection'.toNode(),
-				node.organizer  = '.ui-slide-organizer'.toNode()
+				node.heading    = 'h1.ui-slide-heading'.toNode(),
+				node.subheading = 'subhead.ui-slide-subheading'.toNode(),
+				node.collection = 'p.ui-slide-collection'.toNode(),
+				node.organizer  = 'p.ui-slide-organizer'.toNode()
 			);
 
 			if (data.template) data.template.split(' ').forEach(function (templateName) {
@@ -117,10 +124,10 @@
 					node.name    = 'h1.ui-event-name'.toNode(),
 					node.content = '.ui-event-content'.toNode()
 				),
-				node.time      = '.ui-event-time'.toNode(),
-				node.date      = '.ui-event-date'.toNode(),
-				node.admission = '.ui-event-admission'.toNode(),
-				node.audience  = '.ui-event-audience'.toNode()
+				node.time      = 'p.ui-event-time'.toNode(),
+				node.date      = 'p.ui-event-date'.toNode(),
+				node.admission = 'p.ui-event-admission'.toNode(),
+				node.audience  = 'p.ui-event-audience'.toNode()
 			);
 
 			// populate DOM
