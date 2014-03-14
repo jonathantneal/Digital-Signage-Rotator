@@ -1,0 +1,23 @@
+<!doctype html>
+
+<link href="../css/base.css" rel="stylesheet">
+<link href="../css/DS_Banner.css" rel="stylesheet">
+<link href="../css/DS_Slide.css" rel="stylesheet">
+
+<script src="../js/prototype.js"></script>
+<script src="../js/DS_Banner.js"></script>
+<script src="../js/DS_Slide.js"></script>
+
+<script>
+var banner = new DS_banner(JSON.fetch('banner.json'));
+
+document.documentElement.appendChild(banner.node.main);
+
+banner.collection.forEach(function (item) {
+	banner.node.main.append(item.node.main);
+});
+</script>
+
+<!--
+
+-->

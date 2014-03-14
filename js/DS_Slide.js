@@ -209,7 +209,7 @@
 			);
 
 			// populate DOM
-			if (data.image) node.image.src = data.image; else node.image.src = '../asset/member-mia.jpg';
+			if (data.image) node.image.src = data.image; else node.image.src = '../img/member-mia.jpg';
 			if (data.name) node.name.append(text.name = data.name.toText()); else node.name.remove();
 			if (data.location) node.location.append(text.location = data.location.toText()); else node.location.remove();
 			if (data.email) node.email.append(text.email = data.email.toText()); else node.email.remove();

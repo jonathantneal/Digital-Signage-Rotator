@@ -1,11 +1,11 @@
 {
-	"template": "schedule dark",
+	"template": "schedule light",
 	"heading": "Folino Theatre",
 	"subheading": "Upcoming performance schedule",
 	"organizer": "Dodge College of Film & Media Arts",
 	"collection": [{
 		"name": "How to Lose a Guy in 10 Days",
-		"image": "../asset/poster-1.jpg",
+		"image": "../img/poster-1.jpg",
 		"content": "<p><strong>Screening:</strong> How to Lose a Guy in 10 Days is a 2003 romantic comedy film, directed by Donald Petrie, starring Kate Hudson and Matthew McConaughey. It is based on a short cartoon book of the same name by Michele Alexander and Jeannie Long.</p>",
 		"time": "1:00 p.m.",
 		"date": "Tuesday February 24",
@@ -27,7 +27,7 @@
 		"audience": "Campus community"
 	}, {
 		"name": "Shaft",
-		"image": "../asset/poster-2.jpg",
+		"image": "../img/poster-2.jpg",
 		"content": "<p><strong>Screening &amp; Master Class:</strong> Chinatown is a 1974 American neo-noir film, directed by Roman Polanski from a screenplay by Robert Towne, and starring Jack Nicholson, Faye Dunaway, and John Huston.</p>",
 		"time": "7:00 p.m.",
 		"date": "Tuesday March 4",

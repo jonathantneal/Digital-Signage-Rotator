@@ -1,26 +1,26 @@
 <!doctype html>
 
-<link href="../style/base.css" rel="stylesheet">
-<link href="../style/ui-slide.css" rel="stylesheet">
+<link href="../css/base.css" rel="stylesheet">
+<link href="../css/DS_Slide.css" rel="stylesheet">
 
-<script src="../script/prototype.js"></script>
-<script src="../script/DS_Slide.js"></script>
+<script src="../js/prototype.js"></script>
+<script src="../js/DS_Slide.js"></script>
 
 <script>
-var slide = new DS_Slide_Schedule(JSON.fetch('schedule-dark.json'));
+var slide = new DS_Slide_Schedule(JSON.fetch('schedule-light.json'));
 
 document.documentElement.appendChild(slide.node.main);
 </script>
 
 <!--
-<section class="ui-slide ui-slide--schedule ui-slide--dark">
+<section class="ui-slide ui-slide--schedule ui-slide--light">
 	<h1 class="ui-slide-heading">Folino Theatre</h1>
 	<subhead class="ui-slide-subheading">Upcoming performance schedule</subhead>
 
 	<div class="ui-slide-collection">
 		<article class="ui-event">
 			<div class="ui-event-body">
-				<img class="ui-event-image" src="../asset/poster-1.jpg">
+				<img class="ui-event-image" src="../img/poster-1.jpg">
 				<h1 class="ui-event-name">How to Lose a Guy in 10 Days</h1>
 				<div class="ui-event-content"><p><strong>Screening:</strong> How to Lose a Guy in 10 Days is a 2003 romantic comedy film, directed by Donald Petrie, starring Kate Hudson and Matthew McConaughey. It is based on a short cartoon book of the same name by Michele Alexander and Jeannie Long.</p></div>
 			</div>
@@ -53,7 +53,7 @@ document.documentElement.appendChild(slide.node.main);
 		</article>
 		<article class="ui-event">
 			<div class="ui-event-body">
-				<img class="ui-event-image" src="../asset/poster-2.jpg">
+				<img class="ui-event-image" src="../img/poster-2.jpg">
 				<h1 class="ui-event-name">Shaft</h1>
 				<img class="ui-event-image">
 				<div class="ui-event-content"><p><strong>Screening &amp; Master Class:</strong> Chinatown is a 1974 American neo-noir film, directed by Roman Polanski from a screenplay by Robert Towne, and starring Jack Nicholson, Faye Dunaway, and John Huston.</p></div>
