@@ -98,10 +98,14 @@
 				node.collection = 'p.ui-slide-collection'.toNode(),
 				node.organizer  = 'p.ui-slide-organizer'.toNode()
 			);
+			node.menuItem = 'li.ui-menu-item'.toNode(text.menuItem = ''.toText());
 
-			if (data.template) data.template.split(' ').forEach(function (templateName) {
-				node.main.classList.add('ui-slide--' + templateName);
-			});
+			// update slide class name
+			node.main.className = 'ui-slide' + (data.template ? data.template.split(' ').map(function (name) {
+					return ' ui-slide--' + name;
+				}).join('') : '') + (data.isActive ? ' ui-slide--active' : '');
+
+			node.menuItem.className = 'ui-menu-item' + (data.isActive ? ' ui-menu-item--active' : '');
 
 			// populate DOM
 			if (data.heading) node.heading.append(text.heading = data.heading.toText()); else node.heading.remove();
@@ -181,10 +185,14 @@
 				node.collection = '.ui-slide-collection'.toNode(),
 				node.organizer  = 'p.ui-slide-organizer'.toNode()
 			);
+			node.menuItem = 'li.ui-menu-item'.toNode(text.menuItem = ''.toText());
 
-			if (data.template) data.template.split(' ').forEach(function (templateName) {
-				node.main.classList.add('ui-slide--' + templateName);
-			});
+			// update slide class name
+			node.main.className = 'ui-slide' + (data.template ? data.template.split(' ').map(function (name) {
+					return ' ui-slide--' + name;
+				}).join('') : '') + (data.isActive ? ' ui-slide--active' : '');
+
+			node.menuItem.className = 'ui-menu-item' + (data.isActive ? ' ui-menu-item--active' : '');
 
 			// populate DOM
 			if (data.heading) node.heading.append(text.heading = data.heading.toText()); else node.heading.remove();
