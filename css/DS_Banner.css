@@ -99,8 +99,9 @@
 	box-shadow: 0 -2px 0 0 #FFF;
 }
 
-.ui-menu-item.active {
-	color: #A82439;
+.ui-menu-item--active {
+	color: rgba(168, 36, 57, 1);
+	text-shadow: 0 0 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1);
 }
 
 .ui-menu-caret {

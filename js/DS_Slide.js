@@ -24,37 +24,54 @@
 
 			if (!data) return self;
 
-			// generate DOM
-			node.main = 'section.ui-slide'.toNode(
-				node.body = '.ui-slide-body'.toNode(
-					node.heading    = 'h1.ui-slide-heading'.toNode(),
-					node.subheading = 'subhead.ui-slide-subheading'.toNode(),
-					node.datetime   = 'p.ui-slide-datetime'.toNode(),
-					node.location   = 'p.ui-slide-location'.toNode(),
-					node.content    = '.ui-slide-content'.toNode()
-				),
-				node.background = 'canvas.ui-slide-background'.toNode(),
-				node.foreground = 'canvas.ui-slide-foreground'.toNode(),
-				node.organizer  = 'footer.ui-slide-organizer'.toNode()
-			);
-			node.menuItem = 'li.ui-menu-item'.toNode();
+			self.isActive = !!data.isActive;
 
-			if (data.template) data.template.split(' ').forEach(function (templateName) {
-				node.main.classList.add('ui-slide--' + templateName);
-			});
+			// generate DOM
+			node.main = 'section.ui-slide'.toNode();
+				node.body = '.ui-slide-body'.toNode();
+					node.heading    = 'h1.ui-slide-heading'.toNode(text.heading = ''.toText());
+					node.subheading = 'subhead.ui-slide-subheading'.toNode(text.subheading = ''.toText());
+					node.datetime   = 'p.ui-slide-datetime'.toNode(text.datetime = ''.toText());
+					node.location   = 'p.ui-slide-location'.toNode(text.location = ''.toText());
+					node.content    = '.ui-slide-content'.toNode();
+				node.background = 'canvas.ui-slide-background'.toNode();
+				node.foreground = 'canvas.ui-slide-foreground'.toNode();
+				node.organizer  = 'footer.ui-slide-organizer'.toNode(text.organizer = ''.toText());
+			node.menuItem = 'li.ui-menu-item'.toNode(text.menuItem = ''.toText());
+
+			self.update(data);
+
+			return self;
+		},
+		update: function (data) {
+			var
+			self = this,
+			node = self.node,
+			text = self.text;
+
+			// update slide class name
+			node.main.className = 'ui-slide' + (data.template ? data.template.split(' ').map(function (name) {
+					return ' ui-slide--' + name;
+				}).join('') : '') + (data.isActive ? ' ui-slide--active' : '');
+
+			node.menuItem.className = 'ui-menu-item' + (data.isActive ? ' ui-menu-item--active' : '');
+
+			// position DOM
+			node.main.append(node.body, node.background, node.foreground, node.organizer);
+			node.body.append(node.heading, node.subheading, node.datetime, node.location, node.content);
 
 			// populate DOM
-			if (data.heading) node.heading.append(text.heading = data.heading.toText()); else node.heading.remove();
-			if (data.subheading) node.subheading.append(text.subheading = data.subheading.toText()); else node.subheading.remove();
-			if (data.organizer) node.organizer.append(text.organizer = data.organizer.toText()); else node.organizer.remove();
-			if (data.datetime) node.datetime.append(text.datetime = data.datetime.toText()); else node.datetime.remove();
-			if (data.location) node.location.append(text.location = data.location.toText()); else node.location.remove();
-			if (data.content) node.content.innerHTML = data.content; else node.content.remove();
+			if (data.heading) text.heading.content(data.heading); else node.heading.remove();
+			if (data.subheading) text.subheading.content(data.subheading); else node.subheading.remove();
+			if (data.datetime) text.datetime.content(data.datetime); else node.datetime.remove();
+			if (data.location) text.location.content(data.location); else node.location.remove();
+			if (data.content) node.content.content(data.content); else node.content.remove();
 			if (data.background) node.background.dataset.image = data.background;
 			if (data.foreground) node.foreground.dataset.image = data.foreground;
 			if (data.backgroundSizing) node.background.dataset.sizing = data.backgroundSizing;
 			if (data.foregroundSizing) node.foreground.dataset.sizing = data.foregroundSizing;
-			if (data.menuItem) node.menuItem.append(text.menuItem = data.menuItem.toText());
+			if (data.organizer) text.organizer.content(data.organizer); else node.organizer.remove();
+			if (data.menuItem) text.menuItem.content(data.menuItem);
 
 			return self;
 		}
@@ -219,7 +236,4 @@
 	};
 
 	window.DS_Slide = DS_Slide;
-	window.DS_Slide_Standard = DS_Slide_Standard;
-	window.DS_Slide_Schedule = DS_Slide_Schedule;
-	window.DS_Slide_Directory = DS_Slide_Directory;
 })();

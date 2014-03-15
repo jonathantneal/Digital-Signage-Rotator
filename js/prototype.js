@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	/* global Date, Element, String */
+	/* global Date, Element, String, Text */
 
 	/* HELPER FUNCTIONS
 	   ================ */
@@ -10,9 +10,10 @@
 	MATCH = '(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)',
 	REGEX = '^(?:' + MATCH + ')|^#' + MATCH + '|^\\.' + MATCH + '|^\\[' + MATCH + '(?:([*$|~^]?=)(["\'])((?:(?=(\\\\?))\\8.)*?)\\6)?\\]',
 
-	DatePrototype     = Date.prototype,
-	ElementPrototype  = Element.prototype,
-	StringPrototype   = String.prototype;
+	DatePrototype    = Date.prototype,
+	ElementPrototype = Element.prototype,
+	StringPrototype  = String.prototype,
+	TextPrototype    = Text.prototype;
 
 	// Element
 
@@ -22,8 +23,22 @@
 
 	ElementPrototype.append = ElementPrototype.append || function () {
 		for (var node = this, nodes = arguments, index = 0, length = nodes.length; index < length; ++index) {
-			node.appendChild(nodes[index]);
+			node.appendChild(nodes[index] instanceof Node ? nodes[index] : document.createTextNode(nodes[index]));
 		}
+	};
+
+	ElementPrototype.prepend = ElementPrototype.prepend || function () {
+		for (var node = this, nodes = arguments, index = 0, length = nodes.length, firstChild = node.firstChild; index < length; ++index) {
+			node.insertBefore(nodes[index], firstChild);
+		}
+	};
+
+	ElementPrototype.content = ElementPrototype.content || function (value) {
+		return this.nodeValue !== value ? (this.nodeValue = value) : this.nodeValue;
+	};
+
+	TextPrototype.content = ElementPrototype.content || function (value) {
+		return this.innerHTML !== value ? (this.innerHTML = value) : this.innerHTML;
 	};
 
 	// Date
