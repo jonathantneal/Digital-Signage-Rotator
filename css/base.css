@@ -1,7 +1,0 @@
-*, *:before, *:after { border: 0 solid; box-sizing: border-box; color: inherit; margin: 0; padding: 0; list-style: none; vertical-align: top; text-decoration: inherit; }
-
-html { cursor: default; -webkit-font-smoothing: antialiased; overflow: hidden; -webkit-text-size-adjust: 100%; word-wrap: break-word; }
-
-subhead { display: block; }
-
-a { cursor: pointer; }

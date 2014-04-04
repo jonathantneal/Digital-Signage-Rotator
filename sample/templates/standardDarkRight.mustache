@@ -1,0 +1,16 @@
+<article class="ui-slide ui-slide--standard ui-slide--dark ui-slide--right ui-slide--{{ index === i ? 'active' : 'inactive' }}">
+	<div class="ui-slide-body">
+		<h1 class="ui-slide-heading">{{heading}}</h1>
+		<subhead class="ui-slide-subheading">{{subheading}}</subhead>
+
+		<p class="ui-slide-datetime">{{datetime}}</p>
+		<p class="ui-slide-location">{{location}}</p>
+
+		<div class="ui-slide-content">{{{content}}}</div>
+	</div>
+
+	<canvas class="ui-slide-background" id="background-{{i}}" data-image="{{background}}" data-sizing="{{backgroundSizing}}" data-type="{{backgroundType}}"></canvas>
+	<canvas class="ui-slide-foreground" id="foreground-{{i}}" data-image="{{foreground}}" data-sizing="{{foregroundSizing}}" data-type="{{backgroundType}}"></canvas>
+
+	<footer class="ui-slide-organizer"><img class="ui-slide-organizer-icon" src="img/icon-{{organizerId}}.svg"/> {{organizer}}</footer>
+</article>

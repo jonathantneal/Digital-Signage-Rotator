@@ -1,0 +1,12 @@
+# ----------------------------------------------------------------------
+# Rewrite rules
+# ----------------------------------------------------------------------
+
+# unset the php header
+Header unset X-Powered-By
+
+RewriteEngine on
+
+# go to the router
+RewriteCond %{REQUEST_URI} \.(json)$
+RewriteRule ^.*$ slideshow.php [L]
